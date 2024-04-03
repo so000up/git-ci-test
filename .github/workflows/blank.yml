@@ -3,7 +3,7 @@ name: HTTP Request Action
 on:
   push:
     branches:
-      - master
+      - '*'
 
 jobs:
   http_request_job:
