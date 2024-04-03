@@ -1,0 +1,14 @@
+name: HTTP Request Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  http_request_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: HTTP Request
+      run: curl -X GET https://www.baidu.com
