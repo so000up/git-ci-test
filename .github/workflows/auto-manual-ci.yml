@@ -1,9 +1,6 @@
-name: Auto-manual Workflow
+name: Three-step Workflow
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   step1:
@@ -20,10 +17,8 @@ jobs:
     steps:
       - name: Step 2 - Input env
         run: |
-          read -p "Please input env parameter: " env
-          if [ -z "$env" ]; then
-            echo "EVN parameter is required."
-            exit 1
+          echo "Please input env parameter (test, live, staging):"
+          read env
 
   step3:
     runs-on: ubuntu-latest
@@ -32,7 +27,5 @@ jobs:
     steps:
       - name: Step 3 - Input cid
         run: |
-          read -p "Please input cid parameter: " cid
-          if [ -z "$cid" ]; then
-            echo "CID parameter is required."
-            exit 1
+          echo "Please input cid parameter:"
+          read cid
