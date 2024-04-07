@@ -1,0 +1,29 @@
+name: Auto-manual Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  three_step_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Request to Baidu
+        run: |
+          curl https://www.baidu.com
+   
+      - name: Step 2 - Input env
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          read -p "Please input env parameter (test, live, staging): " env
+          if [ "$env" != "test" ] && [ "$env" != "live" ] && [ "$env" != "staging" ]; then
+            echo "Invalid env parameter. Please input test, live, or staging."
+            exit 1
+          fi
+
+      - name: Step 3 - Input cid
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "Please input cid parameter"
