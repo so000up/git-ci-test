@@ -22,8 +22,10 @@ jobs:
         run: |
           echo "Please input env parameter (test, live, staging):"
           read env
-          echo "Env parameter is: $env"
-          sleep 30
+          if [ -z "$env" ]; then
+            echo "Env parameter not provided. Exiting job."
+            exit 1
+          fi
 
   step3:
     runs-on: ubuntu-latest
@@ -34,5 +36,7 @@ jobs:
         run: |
           echo "Please input cid parameter:"
           read cid
-          echo "CID parameter is: $cid"
-          sleep 30
+          if [ -z "$cid" ]; then
+            echo "CID parameter not provided. Exiting job."
+            exit 1
+          fi
