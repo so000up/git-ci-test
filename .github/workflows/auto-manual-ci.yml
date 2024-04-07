@@ -5,6 +5,15 @@ on:
     branches:
       - master
 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'ENV'
+        required: true
+        default: 'test'
+      tags:
+        description: 'environment'
+
 jobs:
   step1:
     runs-on: ubuntu-latest
