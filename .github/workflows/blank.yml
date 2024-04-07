@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: HTTP Request
+    - name: HTTP Request test
       run: curl -X GET https://www.baidu.com
